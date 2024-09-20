@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "esModuleInterop": true,    // Cannot import react without this
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "downlevelIteration": true,
+    "jsx": "react",
+    "allowJs": true,
+    "noEmit": true,             // Bundling is not done by tsc
+    "skipLibCheck": true        // This reduces the type-checking time a lot
+  },
+  "include": ["src/js/**/*"]
+}
