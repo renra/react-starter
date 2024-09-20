@@ -24,9 +24,12 @@ The most painful part of the process is updating packages. Here's what I do to m
 
 * `$ podman-compose up` - start the project
 * `$ podman ps` - find the container id. There will be the `app` container and the `watcher` container. I usually use `app` but anything would work
-* `$ podman exec -it CONTAINER_ID` - get on the container
+* `$ podman exec -it CONTAINER_ID /bin/bash` - get on the container
 * `$ npm i shiny_new_package` - install whatever you need
-* `$ podman cp CONTAINER_ID:/usr/src/app/package-lock.json .` - get the package-lock.json onto the host so that it can be put to source control
+* `$ podman cp CONTAINER_ID:/usr/src/app/package.json .` - get the package.json onto the host so that it can be put to source control
+* `$ podman cp CONTAINER_ID:/usr/src/app/package-lock.json .` - do the same thing with package-lock.json
+* `$ podman-compose down` - seems like this is necessary with podman, might not be the case with docker
 * `$ podman-compose build` - rebuild the containers. You need to rebuild both `app` and `watcher` otherwise you'll get into trouble
+* `$ podman-compose up` - start the project again
 
 I know, it's a lot of steps, but the ease of setup of the whole project and the transparency of the build pipeline (if I can even call it that way) makes up for it in my eyes. Additionally, this setup can be used for any kind of technology. React, Elm, Vue, whatever so by using it, I am not dependent on the toolchain of any given framework.
